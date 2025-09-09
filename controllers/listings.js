@@ -1,6 +1,6 @@
 const Listing = require("../models/listing")
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
-const map_token = process.env.map_token
+const map_token = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: map_token });
 
 module.exports.index = async(req,res)=>{
@@ -26,7 +26,7 @@ module.exports.showListing = async(req,res)=>{
      req.flash("error" , "Listing you requested for does not exist!")
      return res.redirect("/listings")
    }
-   res.render("listings/show.ejs", {list})
+   res.render("listings/show.ejs", {list , mapToken: process.env.MAP_TOKEN })
 }
 
 module.exports.createListing = async(req,res)=>{ 
