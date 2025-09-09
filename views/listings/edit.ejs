@@ -1,0 +1,75 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+    <div class="edit-form">
+     <h3>Edit Your Listing</h3>
+    <form method="post" action="/listings/<%=currList.id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+             <label for="title" class="form-label">Title</label>
+       <input name="title" id="title" class="form-control" required value="<%=currList.title%>" type="text"/>
+        <div class="valid-feedback">
+     Title Looks good!
+    </div>
+    <div class="invalid-feedback">
+       Please enter title for your listing.
+      </div>
+    </div>
+
+    <div class="mb-3">
+         <label for="desc" class="form-label">Description</label>
+    <textarea value="<%=currList.description%>" id="desc" class="form-control" required name="description"><%=currList.description%></textarea>
+    <div class="valid-feedback">
+      Description Looks good!
+    </div>
+    <div class="invalid-feedback">
+        Please enter a short description.
+      </div>
+</div>
+
+ <div class="mb-3">
+         <label for="image" class="form-label">Upload Listing Image</label>
+     <input name="image" id="image" class="form-control inp" type="file" />
+    </div>
+
+<div class="row">
+        <div class="mb-3 col-md-4">
+         <label for="price" class="form-label">Price</label>
+     <input name="price" value="<%=currList.price%>" id="price" class="form-control inp"  placeholder="Enter Price" type="number" required/>
+      <div class="invalid-feedback">
+       Price should be valid.
+      </div>
+    </div>
+
+     <div class="mb-3 col-md-8">
+         <label for="tax" class="form-label">Tax</label>
+     <input name="tax" id="tax" value="<%=currList.tax%>"  class="form-control inp" placeholder="Enter tax percentage" type="number" max="50" min="0" required/>
+      <div class="invalid-feedback">
+        Enter a tax percentage between 0 and 50.
+      </div>
+    </div>
+    
+    </div>
+
+    <div class="row">
+      <div class="mb-3 col-md-4">
+         <label for="location" class="form-label">Location</label>
+     <input name="location" value="<%=currList.location%>" id="location" class="form-control inp" placeholder="Jaipur, Rajasthan" type="text" required/>
+      <div class="invalid-feedback">
+        Please enter a valid location.
+      </div>
+    </div>
+
+    <div class="mb-3 col-md-8">
+         <label for="country" class="form-label">Country</label>
+     <input name="country" id="country" value="<%=currList.country%>"  class="form-control inp" placeholder="India" type="text" required/>
+      <div class="invalid-feedback">
+        Please enter a valid country.
+      </div>
+    </div>
+    </div>
+
+
+
+    <button class="btn btn-dark add-btn">Edit</button>
+    </form>
+    </div>
+</body>
