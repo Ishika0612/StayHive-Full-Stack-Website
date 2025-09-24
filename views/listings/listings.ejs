@@ -52,13 +52,27 @@
       </div>
     </div>
 
+    <div class="toggle">
+    <div class="sort-toggle">
+      <div id="sort-container">
+    <button onclick="toggleSort(event)" >
+        Sort <span><i class="fa-solid fa-arrows-up-down"></i></span>
+    </button>
+    <div id="sort-options" >
+        <div onclick="applySort('price_asc')" style="padding: 10px; cursor: pointer;">Price: Low to High</div>
+        <div onclick="applySort('price_desc')" style="padding: 10px; cursor: pointer;">Price: High to Low</div>
+    </div>
+</div>
+
+    </div>
+
       <div class="tax-toggle">
          <div class="form-check-reverse form-switch">
            <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
           <label class="form-check-label" for="switchCheckDefault">Show Taxes</label>
        </div>
       </div>
-  </div>
+  </div>  </div>
     
     <% if(lists && lists.length > 0) { %>
     <div class="row row-cols-1 row-cols-lg-3  row-cols-md-2  row-cols-sm-2">
@@ -96,5 +110,31 @@
           }
         }
       })
+
+    function toggleSort(event) {
+       event.stopPropagation();
+  const options = document.getElementById('sort-options');
+  if (options.style.display === 'block') {
+    options.style.display = 'none';
+  } else {
+    options.style.display = 'block';
+  }
+}
+
+
+    function applySort(sortType) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('sort', sortType);
+        window.location.search = urlParams.toString();
+    }
+
+
+    window.addEventListener('click', function(e) {
+        const container = document.getElementById('sort-container');
+        if (!container.contains(e.target)) {
+            document.getElementById('sort-options').style.display = 'none';
+        }
+    });
+
     </script>
 </body>

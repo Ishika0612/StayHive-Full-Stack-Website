@@ -4,15 +4,9 @@ const map_token = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: map_token });
 
 module.exports.index = async(req,res)=>{
-  let {q} = req.query
-  if(q){
-    let lists = await Listing.find({ location: { $regex: q, $options: "i" } })
-    res.render("listings/listings.ejs" , {lists})
-  }
-  else{
-   let lists = await Listing.find()
-   res.render("listings/listings.ejs" , {lists})
-  }
+  let {dest ,sort} = req.query
+    let lists = await Listing.find(dest ? { location: { $regex: dest, $options: "i" } } : {}).sort(sort === "price_asc" ? { price: 1 } : sort === "price_desc" ? { price: -1 } : {});
+    res.render("listings/listings.ejs", { lists });
 }
 
 module.exports.renderNewForm = (req,res)=>{

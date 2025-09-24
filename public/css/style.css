@@ -229,7 +229,6 @@ min-height: 100vh;
 .show .card-img-top{ 
     height:15rem;
      border-radius: 1rem !important;
-    width:100% !important;
     object-fit: cover !important;
 }
 .show .card-body{
@@ -294,9 +293,9 @@ min-height: 100vh;
   height: 400px;
   width:50vw;
  }
- @media (max-width:400px) {
+ @media (max-width:550px) {
   #map { 
-  height: 200px;
+  height: 200px ;
   width:80vw;
  }
  }
@@ -327,26 +326,71 @@ min-height: 100vh;
 .filter p {
   font-size: 0.8rem;
 }
-.tax-info{
-display:none;
+.tax-info {
+    display: none;
 }
-.tax-toggle{
-  border:1px solid black;
-  border-radius: 1rem;
-  padding:0.5rem;
-  margin-left: 3rem;
+
+.tax-toggle {
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 0.5rem;
 }
+
 .filters-scroll {
     display: flex;
     overflow-x: auto;
     gap: 1.5rem;
     scrollbar-width: thin;
 }
-  .form-switch{
-  width:130px;
-  padding:0,0.5rem;
+
+.form-switch {
+    width: 130px;
+    padding: 0 0.5rem;
 }
 
+/* Toggle styles for Sort dropdown */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+     margin-left: 1rem;
+}
+.sort-toggle{
+  width:90px;
+  height:40px;
+}
+#sort-container{
+  position: relative;
+  display: inline-block;
+}
+.sort-toggle button{
+  padding: 8px 16px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   background-color: white;
+   cursor: pointer;
+}
+#sort-options{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+   border-radius: 4px;
+   min-width: 160px;
+   z-index: 1000;
+}
+
+@media (max-width:350px) {
+  .sort-toggle button{
+    padding : 8px;
+  }
+  .tax-toggle{
+    padding : 8px 4px;
+  }
+}
 
 @media (max-width:815px) {
    #filters {
@@ -357,15 +401,24 @@ display:none;
   .filters-scroll {
     width: 100%; /* allow filters to scroll horizontally */
     overflow-x: auto;
-  }
+  } 
 
+  .toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+  }
   .tax-toggle {
-    margin-left: 0; /* remove left margin */
     margin-top: 1rem; /* space below filters */
-     align-self: center;
   }
-
+  .sort-toggle{
+    margin-top:1rem;
+  }
 }
+
+
+
 
 
 /*privacy and terms page */
@@ -387,6 +440,3 @@ display:none;
   text-decoration: underline;
 }
 
-/*
-mongodb+srv://kaushikishika263_db_user:wNmg1rB5x8LABTVk@cluster0.qoifdxk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-*/
