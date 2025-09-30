@@ -50,7 +50,8 @@ const listingSchema = new mongoose.Schema({
     },
     category:{
         type : String,
-        enum : ["Trending","Rooms","Iconic Cities","Mountains","Castles","Amazing Pools","Camping","Farms","Arctic"]
+        enum : ["Trending","Rooms","Iconic Cities","Mountains","Castles","Amazing Pools","Camping","Farms","Arctic","Domes","Boats"],
+         default: "Rooms"
     }
 })
 

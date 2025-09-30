@@ -1,0 +1,92 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body text-center p-5">
+
+          <!-- Profile Avatar -->
+          <img src="https://ui-avatars.com/api/?name=<%= currUser.username %>&background=random&size=120" 
+               alt="Profile Picture" 
+               class="rounded-circle mb-3 shadow">
+
+          <!-- Username (Top) -->
+          <h3 class="fw-bold mb-1"><%= currUser.username %></h3>
+
+          <!-- Role Badge (direct from DB) -->
+          <p>
+            <span class="badge bg-<%= currUser.role === 'Owner' ? 'primary' : 'success' %> px-3 py-2">
+              <%= currUser.role %>
+            </span>
+          </p>
+
+          <!-- User Info -->
+          <ul class="list-group list-group-flush text-start mt-4">
+            <li class="list-group-item">
+              <i class="bi bi-envelope-fill me-2 text-muted"></i>
+              <strong>Email:</strong> <%= currUser.email %>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-fill me-2 text-muted"></i>
+                <strong class="me-1">Username:</strong>
+                <span id="usernameText"><%= currUser.username %></span>
+
+                <!-- Inline edit form (hidden by default) -->
+                <form action="/profile/update-username" method="POST" id="editUsernameForm" class="ms-2 d-none d-flex align-items-center">
+                  <input type="text" name="username" id="usernameInput" value="<%= currUser.username %>" required 
+                         class="form-control form-control-sm me-1" 
+                         style="width:auto; padding:0.25rem 0.5rem; height: calc(1.5em + 0.5rem); font-size: 0.875rem;">
+                  <button class="btn btn-sm btn-primary me-1" type="submit" style="padding:0.25rem 0.5rem;">Save</button>
+                  <button class="btn btn-sm btn-secondary" type="button" id="cancelEditBtn" style="padding:0.25rem 0.5rem;">Cancel</button>
+                </form>
+              </div>
+
+              <!-- Pencil icon to trigger edit -->
+              <button class="btn btn-sm btn-outline-secondary" id="editUsernameBtn">
+                <i class="fa-solid fa-pencil"></i>
+              </button>
+            </li>
+          </ul>
+
+          <!-- Buttons -->
+          <div class="mt-4 d-flex justify-content-center gap-3">
+            <% if(currUser.role === 'Owner'){ %>
+              <a href="/listings/new" class="btn btn-success">
+                <i class="bi bi-house-door-fill me-1"></i> Hive Your Home
+              </a>
+            <% } %>
+            <a href="/logout" class="btn btn-danger">
+              <i class="bi bi-box-arrow-right me-1"></i> Log Out
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script to toggle inline username edit -->
+<script>
+  const editBtn = document.getElementById('editUsernameBtn');
+  const editForm = document.getElementById('editUsernameForm');
+  const cancelBtn = document.getElementById('cancelEditBtn');
+  const usernameText = document.getElementById('usernameText');
+  const usernameInput = document.getElementById('usernameInput');
+
+  editBtn.addEventListener('click', () => {
+    editForm.classList.remove('d-none');
+    usernameText.classList.add('d-none');
+    editBtn.classList.add('d-none');
+    usernameInput.focus(); // auto-focus input
+  });
+
+  cancelBtn.addEventListener('click', () => {
+    editForm.classList.add('d-none');
+    usernameText.classList.remove('d-none');
+    editBtn.classList.remove('d-none');
+  });
+</script>

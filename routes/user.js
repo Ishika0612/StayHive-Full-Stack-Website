@@ -17,4 +17,8 @@ router.route("/login")
 
 router.get("/logout" , userController.logout)
 
+router.get("/profile", userController.profilePage)
+
+router.post("/profile/update-username", userController.updateUsername)
+
 module.exports= router

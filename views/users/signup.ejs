@@ -25,6 +25,16 @@
        <input name="password" id="password" class="form-control inp" required placeholder="Enter Password" type="password"/>
     </div>
 
+    <div class="mb-3">
+    <label for="role" class="form-label">I am a</label>
+    <select name="role" id="role" class="form-control inp" required>
+        <option value="">-- Select --</option>
+        <option value="Owner">Owner</option>
+        <option value="Guest">Guest</option>
+    </select>
+    <div class="invalid-feedback">Please select whether you are a Owner or Guest.</div>
+</div>
+
     <button class="btn btn-success mb-3">SignUp</button>
 
         </form>

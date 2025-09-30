@@ -44,6 +44,11 @@ min-height: 100vh;
     margin-left: 0.5rem;
 }
 
+.profile{
+  border : 2px solid black;
+  border-radius: 40%;
+}
+
 /* Shrink navbar links for medium-small screens */
 @media (min-width: 768px) and (max-width: 815px) {
     .nav-link {
@@ -178,8 +183,8 @@ min-height: 100vh;
   height:250px;
 }
 
-/*create and edit form*/
-.create-form , .edit-form{
+/*create,book and edit form*/
+.create-form , .edit-form,.book-form{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,7 +192,7 @@ min-height: 100vh;
   margin: 2rem 0;
 }
 
-.create-form form ,.edit-form form{
+.create-form form ,.edit-form form,.book-form form{
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 1rem;
@@ -196,7 +201,7 @@ min-height: 100vh;
   width: 100%;
   max-width: 35rem;  /* form stays centered & doesn’t get too wide */
 }
-.create-form form label,.edit-form form label{
+.create-form form label,.edit-form form label,.book-form form label{
     color: #222222;
 }
 .inp {
@@ -205,11 +210,11 @@ min-height: 100vh;
 
 /* Mobile tweaks */
 @media(max-width: 600px) {
-  .create-form,.edit-form {
+  .create-form,.edit-form ,.book-form{
     margin: 1rem;
   }
 
-  .create-form form ,.edit-form form{
+  .create-form form ,.edit-form form,.book-form form{
     padding: 1.5rem;
   }
 }
@@ -249,6 +254,18 @@ min-height: 100vh;
     text-decoration: none;
     color: white;
 }
+.book-btn{
+  background-color: red;
+  margin-top:10px;
+  color:white;
+  border:2px solid black;
+}
+.book-btn:hover{
+  background-color: #fe424d;
+    color:white;
+  border:2px solid black;
+}
+
 
 
 /*reviews*/
@@ -341,6 +358,10 @@ min-height: 100vh;
     overflow-x: auto;
     gap: 1.5rem;
     scrollbar-width: thin;
+}
+.filters-scroll button{
+  border: 0px ;
+  background: 0;
 }
 
 .form-switch {
@@ -440,3 +461,68 @@ min-height: 100vh;
   text-decoration: underline;
 }
 
+/*booking form */
+.form-group{
+  text-align: center;
+}
+/* Style only selects inside form-group */
+.form-group select {
+  appearance: none; /* remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus effect */
+.form-group select:focus {
+  outline: none;
+  border-color: #3399cc;
+  box-shadow: 0 0 6px rgba(51, 153, 204, 0.4);
+}
+
+.btn-pay {
+  width: 60%;  /* balanced for narrower form */
+  padding: 12px;
+  background: linear-gradient(90deg, #3399cc, #287ba0);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin: 1rem auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-pay:hover {
+  background: linear-gradient(90deg, #287ba0, #1f5a7a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn-pay {
+    width: 70%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-pay {
+    width: 90%;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+}
+
+.category{
+  cursor:pointer;
+}

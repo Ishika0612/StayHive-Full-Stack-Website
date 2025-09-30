@@ -7,7 +7,8 @@ const listingSchema = Joi.object({
         tax:Joi.number().required().min(0).max(50),
         location : Joi.string().required(),
         price : Joi.number().required().min(0),
-        image : Joi.string().allow("",null)
+        image : Joi.string().allow("",null),
+        category: Joi.string().default("Rooms"),
 })
 
 const reviewSchema = Joi.object({

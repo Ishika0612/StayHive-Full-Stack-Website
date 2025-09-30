@@ -24,7 +24,9 @@
    <button class="btn btn-dark add-btn"> <a href="/listings/<%= list.id %>/edit" class="card-link">Edit</a> </button>
     <form method="post"  action="/listings/<%=list.id%>?_method=DELETE" > <button class="btn btn-dark add-btn del" >Delete</button> </form>
   </div>
-  <% } %> 
+  <% } else{ %> 
+      <form method="get" action="/listings/<%=list.id%>/booking"> <button class="book-btn btn add-btn">Book Now</button></form>
+      <% } %>
 </div>
     </div>
 

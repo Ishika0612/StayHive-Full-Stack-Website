@@ -30,6 +30,22 @@
      <input name="image" id="image" class="form-control inp" type="file" required/>
     </div>
 
+    <div class="mb-3">
+  <label for="category" class="form-label">Category</label>
+  <select name="category" id="category" class="form-control inp category" required>
+    <option value="">Select Category</option>
+    <% 
+      const categories = ["Trending","Rooms","Iconic Cities","Mountains","Castles","Amazing Pools","Camping","Farms","Arctic","Domes","Boats"]; 
+      categories.forEach(cat => { 
+    %>
+      <option value="<%= cat %>" >
+        <%= cat %>
+      </option>
+    <% }) %>
+  </select>
+</div>
+
+
     <div class="row">
         <div class="mb-3 col-md-4">
          <label for="price" class="form-label">Price</label>

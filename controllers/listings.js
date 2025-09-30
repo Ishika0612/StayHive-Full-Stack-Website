@@ -3,11 +3,34 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 const map_token = process.env.MAP_TOKEN
 const geocodingClient = mbxGeocoding({ accessToken: map_token });
 
-module.exports.index = async(req,res)=>{
-  let {dest ,sort} = req.query
-    let lists = await Listing.find(dest ? { location: { $regex: dest, $options: "i" } } : {}).sort(sort === "price_asc" ? { price: 1 } : sort === "price_desc" ? { price: -1 } : {});
-    res.render("listings/listings.ejs", { lists });
-}
+module.exports.index = async (req, res) => {
+  let { dest, sort, category } = req.query;
+
+  // Build the filter object dynamically
+  let filter = {};
+
+  if (dest) {
+      filter.$or = [
+      { location: { $regex: dest, $options: "i" } }, // case-insensitive search in location
+      { title: { $regex: dest, $options: "i" } }      // case-insensitive search in hotel name
+    ];
+  }
+
+  if (category) {
+    filter.category = category; // exact match
+  }
+
+  // Determine sort order
+  let sortOption = {};
+  if (sort === "price_asc") sortOption.price = 1;
+  else if (sort === "price_desc") sortOption.price = -1;
+
+  // Query the database
+  let lists = await Listing.find(filter).sort(sortOption);
+
+  res.render("listings/listings.ejs", { lists});
+};
+
 
 module.exports.renderNewForm = (req,res)=>{
     res.render("listings/new.ejs")
@@ -72,3 +95,8 @@ module.exports.destroyListing = async(req,res)=>{
     req.flash("success" , "Listing Deleted Successfully!")
     res.redirect("/listings")
 }
+
+module.exports.renderBookingForm = async(req,res)=>{
+  res.render("listings/booking.ejs");
+}
+

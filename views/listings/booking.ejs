@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') -%>
+
+<div class="book-form">
+ <h2 class="mb-3 mt-3">Book Your Stay</h2>
+
+<form novalidate class="needs-validation">
+
+  <!-- Guest Name -->
+  <div class="mb-3">
+    <label for="guestName">Full Name</label>
+    <input type="text" id="guestName" name="guestName" class="form-control inp" placeholder="Enter your name" required>
+  </div>
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="guestEmail">Email</label>
+    <input type="email" id="guestEmail" name="guestEmail" class="form-control inp" placeholder="Enter your email" required>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="mb-3">
+    <label for="guestPhone">Phone Number</label>
+    <input type="tel" id="guestPhone" name="guestPhone" class="form-control inp" placeholder="Enter your phone number" required>
+  </div>
+
+  <!-- Check-in & Check-out Dates -->
+   <div class="row">
+  <div class="mb-3 col-md-6">
+    <label for="checkIn">Check-In Date</label>
+    <input type="date" id="checkIn" name="checkIn" class="form-control inp" required>
+  </div>
+
+  <div class=" mb-3 col-md-6">
+    <label for="checkOut">Check-Out Date</label>
+    <input type="date" id="checkOut" name="checkOut" class="form-control inp" required>
+  </div>
+  </div>
+
+
+  <div class="row">
+  <!-- Number of Guests / Adults -->
+  <div class="mb-3 col-md-6">
+    <label for="guests">Number of Guests</label>
+    <input type="number" id="guests" name="guests" min="1" value="1" required class="form-control inp">
+  </div>
+
+    <!-- Number of Rooms -->
+  <div class="mb-3 col-md-6">
+    <label for="rooms">Number of Rooms</label>
+    <input type="number" id="rooms" name="rooms" min="1" value="1" class="form-control inp" required>
+  </div>
+  </div>
+
+
+  <!-- Room Type -->
+  <div class="form-group mb-3 mt-3">
+    <label for="roomType" >Room Type</label>
+    <select name="roomType" id="roomType" required>
+      <option value="">Select Room Type</option>
+      <option value="single">Single</option>
+      <option value="double">Double</option>
+    </select>
+  </div>
+
+  <!-- Submit Button -->
+   <div class="form-group mb-3">
+  <button type="submit" class="btn-pay">Pay Now</button>
+  </div>
+</form>
+</div>

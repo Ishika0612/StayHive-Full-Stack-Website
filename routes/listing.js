@@ -43,5 +43,7 @@ router.route("/:id" )
 //form to edit any listing
 router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.renderEditForm))
 
+//render booking form
+router.get("/:id/booking",isLoggedIn,wrapAsync(listingController.renderBookingForm))
 
 module.exports = router
